@@ -1,0 +1,8 @@
+[package]
+name = "fact"
+version = "0.1.0"
+authors = ["dnesbitt03qub <dnesbitt03@qub.ac.uk>"]
+edition = "2018"
+
+[dependencies]
+rug = "1.4"
