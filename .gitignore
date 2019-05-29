@@ -1,0 +1,11 @@
+*/a.out
+*#
+*~
+*.bak
+*/build/*
+*/obj/*
+
+# Rust
+*/target
+*Cargo.lock
+
