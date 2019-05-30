@@ -29,4 +29,7 @@ This will be a golf challenge, so users will be scored based on the length of th
 
 ### Leaderboard
 
-* TBD
+User | Solution | Size
+--- | --- | ---
+specs | 648 | 70
+plusuncold |  | 326
