@@ -1,4 +1,3 @@
-a = 1
-for x in range(2, 101):
-    a *= x
+import math
+a = math.factorial(100)
 print(sum(int(x) for x in str(a)))
