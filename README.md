@@ -18,10 +18,18 @@ What is the sum of the digits of the result of `100!`, where `n!`  represents `n
 
 Example: `5! = 5 x 4 x 3 x 2 x 1 = 120`. The sum of the digits of `120` is `1 + 2 + 0`, which is `3`. Therefore the solution is `3`.
 
+#### Output
+
+Use a .sh file to output your username, the results, and your solution's byte size.
+Ex: ``echo "specs, `python run.py`, `wc -c < run.py`"``
+
 #### Scoring
 
 This will be a golf challenge, so users will be scored based on the length of their solution in bytes.
 
 ### Leaderboard
 
-* TBD
+User | Solution | Size
+--- | --- | ---
+specs | 648 | 70
+plusuncold | 648 | 174

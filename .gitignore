@@ -1,0 +1,17 @@
+*/a.out
+*#
+*~
+*.bak
+*/build/*
+*/obj/*
+
+# Rust
+*/target
+*Cargo.lock
+
+# Python
+*.pyc
+venv/
+
+# VS Code
+.vscode/
