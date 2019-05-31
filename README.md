@@ -33,4 +33,4 @@ User | Solution | Size
 --- | --- | ---
 specs | 648 | 70
 therecluse26 | 648 | 210
-plusuncold |  | 326
+plusuncold | 648 | 326
