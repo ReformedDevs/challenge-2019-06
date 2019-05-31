@@ -31,6 +31,7 @@ This will be a golf challenge, so users will be scored based on the length of th
 
 User | Solution | Size
 --- | --- | ---
+patrickcarver | 648 | 68
 specs | 648 | 70
 plusuncold | 648 | 174
 therecluse26 | 648 | 210
