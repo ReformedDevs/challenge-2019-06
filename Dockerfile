@@ -8,7 +8,8 @@ RUN apk update && apk add \
     cargo \
     ruby \
     jruby \
-    m4
+    m4 \
+    elixir
 
 RUN pip3 install six
 
