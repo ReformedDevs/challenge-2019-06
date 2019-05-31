@@ -33,3 +33,4 @@ User | Solution | Size
 --- | --- | ---
 specs | 648 | 70
 plusuncold | 648 | 174
+therecluse26 | 648 | 210
