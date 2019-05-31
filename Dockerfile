@@ -7,7 +7,8 @@ RUN apk update && apk add \
     rust \
     cargo \
     ruby \
-    jruby
+    jruby \
+    m4
 
 RUN pip3 install six
 
