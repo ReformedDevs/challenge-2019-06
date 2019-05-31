@@ -21,7 +21,8 @@ for d in TEST_DIRS:
             results.append({
                 'user': items[0],
                 'solution': items[1].replace(' ', ''),
-                'size': int(items[2].replace(' ', ''))
+                'size': int(items[2].replace(' ', '')),
+                'lang': d.split('/')[-1].split('-')[0]
             })
 
 results = sorted(results, key=lambda k: k['size'])
@@ -35,10 +36,11 @@ if os.path.isfile(README):
         heading = readme.find('# Leaderboard')
         line = readme.find('\n\n', heading)
         readme = readme[:line + 2]
-        table = 'User | Solution | Size\n--- | --- | ---'
+        table = 'User | Language | Solution | Size\n--- | --- | --- | ---'
         for result in results:
-            table += '\n{} | {} | {}'.format(
-                result['user'], result['solution'], result['size'])
+            table += '\n{} | {} | {} | {}'.format(
+                result['user'], result['lang'],
+                result['solution'], result['size'])
 
         with open(README, 'w') as f:
             f.write(readme + table)
