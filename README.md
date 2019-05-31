@@ -33,5 +33,5 @@ User | Language | Solution | Size
 --- | --- | --- | ---
 specs | python | 648 | 64
 patrickcarver | elixir | 648 | 68
-plusuncold | rust | 648 | 174
+plusuncold | rust | 648 | 148
 therecluse26 | golang | 648 | 210
