@@ -1,1 +1,1 @@
-IO.puts Enum.sum Integer.digits (fn->Enum.reduce 2..100,&*/2 end).()
+2..100|>Enum.reduce(&*/2)|>Integer.digits|>Enum.sum|>IO.puts
