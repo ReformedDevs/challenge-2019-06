@@ -10,7 +10,8 @@ RUN apk update && apk add \
     jruby \
     m4 \
     elixir \
-    go
+    go \
+    bc
 
 RUN pip3 install six
 
