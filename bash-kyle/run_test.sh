@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NAME="Kyle Nweeia"
+NAME="Kyle Nweeia/pard68"
 SOURCE=run.sh
 RUN_COMMAND=$(bash run.sh)
 
