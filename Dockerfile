@@ -4,6 +4,7 @@ RUN apk update && apk add \
     bash \
     build-base \
     python3 \
+    python2 \
     rust \
     cargo \
     ruby \

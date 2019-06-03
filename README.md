@@ -33,6 +33,7 @@ User | Language | Solution | Size
 --- | --- | --- | ---
 pard68 | pyth | 648 | 34
 patrickcarver | elixir | 648 | 57
+Kyle Nweeia | python | 648 | 59
 MatthewRDodds | ruby | 648 | 60
 specs | python | 648 | 64
 Kyle Nweeia | bash | 648 | 73
