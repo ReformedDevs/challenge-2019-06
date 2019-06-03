@@ -29,7 +29,12 @@ This will be a golf challenge, so users will be scored based on the length of th
 
 ### Leaderboard
 
-User | Solution | Size
---- | --- | ---
-specs | 648 | 70
-plusuncold |  | 326
+User | Language | Solution | Size
+--- | --- | --- | ---
+pard68 | pyth | 648 | 34
+patrickcarver | elixir | 648 | 57
+MatthewRDodds | ruby | 648 | 60
+specs | python | 648 | 64
+Kyle Nweeia | bash | 648 | 73
+plusuncold | rust | 648 | 148
+therecluse26 | golang | 648 | 210
