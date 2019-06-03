@@ -35,7 +35,7 @@ pard68 | pyth | 648 | 34
 patrickcarver | elixir | 648 | 57
 Kyle Nweeia | python | 648 | 59
 MatthewRDodds | ruby | 648 | 60
+Kyle Nweeia/pard68 | bash | 648 | 62
 specs | python | 648 | 64
-Kyle Nweeia | bash | 648 | 73
 plusuncold | rust | 648 | 148
 therecluse26 | golang | 648 | 210
