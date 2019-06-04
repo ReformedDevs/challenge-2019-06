@@ -36,5 +36,5 @@ Pyth | Python | Comments
 -----|--------|---------
  `s` | `sum()` | returns the sum of a list of ints
  `j` | `map(base, str(n)` | Takes an int, returns a list of the digits of that int in the base specified
- `.!100` | `math.factorial(100)` |
+ `.!99` | `math.factorial(99)` | Summing the digits of !100 is the same as summing the digits of !99, since 100 * N is just N with two extra zeros. Using 99 instead saves a byte and gets the same result.
  `T` | `int(10)` |
