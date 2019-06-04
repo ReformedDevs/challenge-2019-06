@@ -23,5 +23,10 @@ RUN dpkg -i --force-all *.deb
 
 RUN pip3 install six
 
+RUN USER=root cargo new --bin shell-project
+WORKDIR /shell-project
+COPY rust-plusuncold/Cargo.toml ./Cargo.toml
+RUN cargo build --release
+
 COPY . /home/
 ENTRYPOINT python3 /home/run_tests.py
