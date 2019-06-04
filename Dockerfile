@@ -2,17 +2,24 @@ FROM node:11-alpine
 
 RUN apk update && apk add \
     bash \
+    bc \
     build-base \
-    python3 \
-    python2 \
-    rust \
     cargo \
-    ruby \
-    jruby \
-    m4 \
+    dpkg \
     elixir \
     go \
-    bc
+    jruby \
+    m4 \
+    python2 \
+    python3 \
+    ruby \
+    rust \
+    tar
+
+RUN touch /var/lib/dpkg/status
+RUN dpkg --configure -a
+RUN wget http://mirrors.kernel.org/ubuntu/pool/universe/p/pari/pari-gp_2.11.0-1_amd64.deb
+RUN dpkg -i --force-all *.deb
 
 RUN pip3 install six
 
