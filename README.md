@@ -31,11 +31,13 @@ This will be a golf challenge, so users will be scored based on the length of th
 
 User | Language | Solution | Size
 --- | --- | --- | ---
-cco3 | gp | 648 | 26
-pard68 | pyth | 648 | 34
+pard68 | pyth | 648 | 26
+cco3 | gp |  | 26
 sircharleswatson | elixir | 648 | 56
-cco3 | python | 648 | 57
 patrickcarver | elixir | 648 | 57
+cco3 | python | 648 | 57
+pard68 | python | 648 | 58
+Ben Green | python | 648 | 58
 Kyle Nweeia | python | 648 | 59
 MatthewRDodds | ruby | 648 | 60
 Kyle Nweeia/pard68 | bash | 648 | 62
