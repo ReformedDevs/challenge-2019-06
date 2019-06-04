@@ -29,3 +29,12 @@ Pyth | Python | Comments
  `=+ZN | Z += N` | Var `Z` is set to `0`. However, it's not a const so it can be changed, using it to save doing `K0` before the loop's start.
  `;` | | Python doesn't exatly have an equivalent to `;`, it's roughly an EOL, except Pyth doesn't know what an EOL is.
  `Z` | `print(Z)` | Pyth's `print()` is implicit, the last thing in a line of Pyth code will automatically be printed.
+
+## sj.!100
+
+Pyth | Python | Comments
+-----|--------|---------
+ `s` | `sum()` | returns the sum of a list of ints
+ `j` | `map(base, str(n)` | Takes an int, returns a list of the digits of that int in the base specified
+ `.!100` | `math.factorial(100)` |
+ `T` | `int(10)` |
