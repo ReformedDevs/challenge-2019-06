@@ -1,1 +1,1 @@
-print(BigInt(2).to(100).product.toString.map(_.asDigit).sum)
+print(BigInt(2).to(99).product.toString.map(_.asDigit).sum)
