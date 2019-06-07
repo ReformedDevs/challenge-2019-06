@@ -38,6 +38,7 @@ patrickcarver | elixir | 648 | 57
 cco3 | python | 648 | 57
 pard68 | python | 648 | 58
 Ben Green | python | 648 | 58
+Ben Green | scala |  | 59
 Kyle Nweeia | python | 648 | 59
 MatthewRDodds | ruby | 648 | 60
 Kyle Nweeia/pard68 | bash | 648 | 62
