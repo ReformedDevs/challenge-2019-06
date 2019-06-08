@@ -13,9 +13,10 @@ good old days.
 Made possible by
  - `6502.org`_ the 6502 microprocessor resource
  - cbA65 65xx assembler `http://crbond.com/tools.htm <http://crbond.com/tools.htm>`_
- - Py65 65xx emulator* `https://github.com/mnaberez/py65 <https://github.com/mnaberez/py65>`_
+ - Py65 65xx emulator `https://github.com/mnaberez/py65 <https://github.com/mnaberez/py65>`_
  
-* Modified specifically to enable the actual 6502 code to run for the challenge
+Note: The version of Py65 used to run Pony is a modified subset of the project. If you want
+to use it to dive into 65xx programming, I highly recommend using an official version.
  
 .. _6502.org: http://6502.org/
 
