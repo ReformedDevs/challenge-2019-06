@@ -1,4 +1,4 @@
-from py65.devices import mpu6502
+import mpu6502      # !!lb flatten directories
 
 
 class MPU(mpu6502.MPU):

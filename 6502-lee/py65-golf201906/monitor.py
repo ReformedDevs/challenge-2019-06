@@ -27,15 +27,15 @@ import shlex
 import sys
 
 from asyncore import compact_traceback
-from py65.devices.mpu6502 import MPU as NMOS6502
-from py65.devices.mpu65c02 import MPU as CMOS65C02
-from py65.devices.mpu65org16 import MPU as V65Org16
-from py65.disassembler import Disassembler
-from py65.assembler import Assembler
-from py65.utils.addressing import AddressParser
-from py65.utils import console
-from py65.utils.conversions import itoa
-from py65.memory import ObservableMemory
+from mpu6502 import MPU as NMOS6502             # !!lb flatten directories
+from mpu65c02 import MPU as CMOS65C02           # !!lb
+from mpu65org16 import MPU as V65Org16          # !!lb
+from disassembler import Disassembler           # !!lb
+from assembler import Assembler                 # !!lb
+from addressing import AddressParser            # !!lb
+import console                                  # !!lb
+from conversions import itoa                    # !!lb
+from memory import ObservableMemory             # !!lb
 
 try:
     from urllib2 import urlopen
