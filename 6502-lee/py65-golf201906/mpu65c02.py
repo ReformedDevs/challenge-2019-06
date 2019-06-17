@@ -1,5 +1,5 @@
-from py65.devices import mpu6502
-from py65.utils.devices import make_instruction_decorator
+import mpu6502                                      # !!lb flatten directories
+from devices import make_instruction_decorator      # !!lb
 
 
 class MPU(mpu6502.MPU):

@@ -1,5 +1,5 @@
-from py65.utils.conversions import itoa
-from py65.utils.devices import make_instruction_decorator
+from conversions import itoa                        # !!lb flatten directories
+from devices import make_instruction_decorator      # !!lb
 
 
 class MPU:

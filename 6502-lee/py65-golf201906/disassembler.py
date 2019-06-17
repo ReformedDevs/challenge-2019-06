@@ -1,4 +1,4 @@
-from py65.utils.addressing import AddressParser
+from addressing import AddressParser            # !!lb flatten directories
 
 
 class Disassembler:
