@@ -1,0 +1,8 @@
+[package]
+name = "rust-pard68"
+version = "0.1.0"
+authors = ["Ian S Pringle <pard@0x44.pw>"]
+edition = "2018"
+
+[dependencies]
+rug = "1.4"

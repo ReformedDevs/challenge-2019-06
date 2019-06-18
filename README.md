@@ -39,4 +39,5 @@ MatthewRDodds | ruby | 648 | 60
 Kyle Nweeia/pard68 | bash | 648 | 62
 specs | python | 648 | 64
 plusuncold | rust | 648 | 148
+pard68 | rust | 648 | 163
 therecluse26 | golang | 648 | 210
