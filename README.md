@@ -32,7 +32,7 @@ This will be a golf challenge, so users will be scored based on the length of th
 User | Language | Solution | Size
 --- | --- | --- | ---
 pard68 | pyth | 648 | 8
-pard68 | python |  | 54
+pard68 | python |  | 56
 patrickcarver | elixir | 648 | 57
 Kyle Nweeia | python |  | 59
 MatthewRDodds | ruby | 648 | 60
