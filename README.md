@@ -43,6 +43,7 @@ Kyle Nweeia | python | 648 | 59
 MatthewRDodds | ruby | 648 | 60
 Kyle Nweeia/pard68 | bash | 648 | 62
 specs | python | 648 | 64
+Lee Behrens | applesoft | 648 | 130
 plusuncold | rust | 648 | 147
 Lee Behrens | 6502 | 648 | 150
 therecluse26 | golang | 648 | 210
