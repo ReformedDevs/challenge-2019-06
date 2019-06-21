@@ -1,0 +1,234 @@
+; PONY - Reformed Devs Code Golf 2019.06 submission
+; https://github.com/ReformedDevs/challenge-2019-06
+; (so named because if not this, then writing My Little Pony fanfic)
+; Lee Behrens
+;
+; Compute sum of digits of N!, where N can be 1..100 (100 for Code Golf)
+;
+; Integer values stored in big-endian byte order to simplify loop tests
+; Uses BCD to simplify output and avoid a messy conversion of factorial for summing 
+;
+;
+;
+; ASSEMBLE:
+; cba65 pony
+;
+; TRUNCATE TO ACTUAL BYTE SIZE FOR REFORMED DEVS CODE GOLF (OPTIONAL):
+; python cgtrunc.py pony.bin
+;
+; LOAD/RUN FOR TESTING (MODIFIED PY65MON):
+; python monitor.py -o 00ff -l pony.bin -a 0300 [-g 0300]
+;
+; RUN FOR CODE GOLF (MODIFIED PY65MON):
+; python monitor.py -o 00ff -l pony.bin -a 0300 -g 0300 -q
+
+
+
+        .FILES  ROM=256
+
+; VALUES
+FVAL    .EQU    $0100           ; BCD NUMBER TO CALC FACTORIAL OF (1..100)
+FLEN    .EQU    $4F             ; SIZE OF FACTORIAL RESULT (NEED $4F/79 FOR 100!)
+ZPSIZE  .EQU    FMUL+FLEN       ; SIZE OF ZP BLOCK TO CLEAR (WHEN DEBUGGING)
+
+; ZERO PAGE        
+FACTOR  .EQU    $00             ; (1) BCD FACTOR IN FACTORIAL CALC (MEANS MAX 100!)
+FSUM    .EQU    FACTOR+1        ; (2) BCD SUM OF FACTORIAL DIGITS
+FCTRL   .EQU    FSUM+2          ; (FLEN) BCD FACTORIAL RESULT
+FMUL    .EQU    FCTRL+FLEN      ; (FLEN) BCD FACTORIAL MULTIPLIER
+PUTC    .EQU    $FF             ; (1) MOVING PY65MON'S PUTC TO ZP SHAVES 3 BYTES
+
+
+        .ORG    $0300
+ENTRY   SED                     ; BCD MODE AVOIDS MESSY VALUE CONVERSIONS
+
+; ; ******** BEGIN COMMENT OUT FOR FINAL
+; 
+; ; OUTPUT A ! SO WE KNOW THE CODE AT LEAST STARTED
+;         LDA     #$21
+;         STA     PUTC
+;         
+; ; CLEAR ZERO PAGE VALUES      
+; CLRZP   LDA     #$00            ; CLEAR ZP SCRATCH, ASSUME CONTIGUOUS RANGE
+;         LDX     #ZPSIZE
+; CLRZP1  STA     FACTOR,X
+;         DEX
+;         BNE     CLRZP1          ; FACTOR NOT ZEROED, BUT IS SET IN INIT
+; 
+; ******** END COMMENT OUT FOR FINAL
+
+
+        
+; INIT ZERO PAGE VALUES        
+INIT    LDX     #FLEN-1
+        LDA     #>FVAL
+        STA     FCTRL-1,X
+        LDA     #<FVAL
+        STA     FCTRL,X
+        STA     FACTOR
+        
+        JSR     DECFACT
+        JSR     DECFACT
+
+; CALCULATE FACTORIAL
+CALCFAC
+
+        
+; CONVERT FACTOR FROM BCD TO BINARY FOR USE WHEN MULTIPLYING
+FACTBIN LDA     FACTOR          ; GET BINARY VALUE FOR TENS DIGIT
+        JSR     HIDIGIT
+        TAX
+        LDA     BINTENS,X
+        STA     FMUL
+        LDA     FACTOR          ; BINARY VALUE OF ONES DIGIT = BCD VALUE
+        AND     #$0F
+        CLC
+        CLD                     ; ADD TENS AND ONES IN BINARY
+        ADC     FMUL
+        SED                     ; BACK TO BCD MODE FOR MULTIPLYING
+        TAY                     ; TRANSFER TO Y-REG FOR ADDMUL
+
+; COPY PARTIAL RESULT FOR NEXT ROUND OF MULTIPLICATION
+CPMUL   LDX     #FLEN-1
+CPMUL1  LDA     FCTRL,X
+        STA     FMUL,X
+        DEX
+        BPL     CPMUL1
+
+; ADD MULTIPLIER TO FACTORIAL
+; ITERATIVE ADDITION SAVES A LOT OF CODE
+; Y-REG IS THE NUMBER OF TIMES TO ADD
+ADDMUL
+        
+ADDMUL2 CLC                     ; ADD FMUL TO FCTRL
+        LDX     #FLEN-1
+        
+ADDMUL3 LDA     FMUL,X
+        ADC     FCTRL,X
+        STA     FCTRL,X
+        DEX                     ; REPEAT UNTIL ENTIRE NUMBER ADDED
+        BPL     ADDMUL3
+        
+        DEY                     ; REPEAT UNTIL FULLY MULTIPLIED
+        BNE     ADDMUL2         ; YES, BNE HERE INSTEAD OF BPL
+
+
+; ; ******** BEGIN COMMENT OUT FOR FINAL
+; 
+; ; OUTPUT A . TO HELP SEE HOW FAST CODE RUNNING
+;         LDA     #'.'
+;         STA     PUTC
+; 
+; ******** END COMMENT OUT FOR FINAL
+
+; REPEAT FOR THE NEXT FACTOR
+        JSR     DECFACT
+        BNE     CALCFAC
+        
+; SUM THE DIGITS IN THE FACTORIAL
+SUMDGT  LDX     #FLEN-1
+        
+SUMDGT1 LDA     FCTRL,X         ; ADD HI DIGIT IN BYTE
+        JSR     HIDIGIT
+        JSR     ADDSUMD
+        
+        LDA     FCTRL,X         ; ADD LO DIGIT IN BYTE
+        AND     #$0F
+        JSR     ADDSUMD
+        
+        DEX                     ; REPEAT FOR NEXT BYTE
+        BPL     SUMDGT1
+        
+; OUTPUT THE SUM DIGITS
+; SHORTCUT: WE KNOW THERE ARE THREE DIGITS
+OUTSUM  LDA     FSUM            ; OUTPUT HUNDREDS DIGIT (THOUSANDS IS 0)
+        JSR     OUTLDGT
+
+        LDA     FSUM+1          ; OUTPUT TENS DIGIT
+        JSR     HIDIGIT
+        JSR     OUTDGT
+        
+        LDA     FSUM+1          ; OUTPUT ONES DIGIT
+        JSR     OUTLDGT
+
+
+; ALL DONE; RTS/BRK RETURNS CONTROL TO PY65MON
+DONE    RTS
+
+
+; ----------------------------------------------------------------
+; ASSORTED UTILITY ROUTINES NOT INLINED ABOVE TO SHAVE A FEW BYTES
+; ----------------------------------------------------------------
+
+; DECREMENT FACTOR
+; IN BCD, SO MUST USE SBC INSTEAD OF DEC
+DECFACT SEC
+        LDA     FACTOR
+        SBC     #$01
+        STA     FACTOR
+        RTS
+        
+; GET HI DIGIT OF VALUE IN ACC
+HIDIGIT LSR
+        LSR
+        LSR
+        LSR
+        RTS
+        
+; ADD DIGIT TO SUM
+ADDSUMD CLC
+        ADC     FSUM+1
+        STA     FSUM+1
+        LDA     #$00
+        ADC     FSUM
+        STA     FSUM
+        RTS
+
+; OUTPUT LO DIGIT (FALL-THROUGH TO NEXT)
+OUTLDGT AND     #$0F
+
+; OUTPUT DIGIT
+OUTDGT  ORA     #$30
+        STA     PUTC
+        RTS
+
+; BCD TENS VALUES IN BINARY
+BINTENS .DB     $00, $0A, $14
+        .DB     $1E, $28, $32
+        .DB     $3C, $46, $50
+        .DB     $5A
+
+
+; WRITE SIZE OF CODE AT END SO CGSIZE.PY OR CGTRUNC.PY CAN CORRECTLY
+; PRINT/TRUNCATE THE SIZE OF THE CODE (WITHOUT EXTRA PADDING) FOR
+; REFORMED DEVS CODE GOLF.
+
+CODELEN .EQU    * - ENTRY
+        .ORG    ENTRY + $F8     ; ONLY WORKS FOR SINGLE 256-BYTE PAGE
+        .DW     CODELEN
+        
+; 6502 VECTORS IN CASE RUNNING IN TOP MEM AND RESET-STARTING 
+NMI     .DW     $0000           ; $FFFA
+RESET   .DW     ENTRY           ; $FFFC
+IRQBRK  .DW     $0000           ; $FFFE  
+      
+        .END
+
+; 5! = 120
+;
+; Helpful info... https://coolconversion.com/math/factorial/_100_
+;
+; 100! = 93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000
+; sum of digits of 100! = 648
+;
+; 100! is 158 digits
+;
+; 158 / 2 = 79 ($4F) bytes required to store 158 BCD digits
+;
+;
+;
+; bits required for N decimal digits (binary integer) = ceiling(N / log10(2))
+; Source: https://stackoverflow.com/questions/7150035/calculating-bits-required-to-store-decimal-number
+; 
+; 525 bits required to store 158 decimal digits (binary integer)
+; 66 bytes required to store 158 decimal digits (binary integer)

@@ -32,12 +32,18 @@ This will be a golf challenge, so users will be scored based on the length of th
 User | Language | Solution | Size
 --- | --- | --- | ---
 pard68 | pyth | 648 | 8
-pard68 | python |  | 56
+cco3 | gp |  | 26
+sircharleswatson | elixir | 648 | 56
 patrickcarver | elixir | 648 | 57
-Kyle Nweeia | python |  | 59
+cco3 | python | 648 | 57
+pard68 | python | 648 | 58
+Ben Green | python | 648 | 58
+Ben Green | scala |  | 59
+Kyle Nweeia | python | 648 | 59
 MatthewRDodds | ruby | 648 | 60
 Kyle Nweeia/pard68 | bash | 648 | 62
 specs | python | 648 | 64
-plusuncold | rust | 648 | 148
-pard68 | rust | 648 | 163
+Lee Behrens | applesoft | 648 | 130
+plusuncold | rust | 648 | 147
+Lee Behrens | 6502 | 648 | 150
 therecluse26 | golang | 648 | 210
